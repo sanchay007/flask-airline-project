@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('home')}}">AeroGen</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    
+                </ul>
+
+               
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/showOlderBooking/{{var}}" class="active">Show Older Booking</a></li>
+                    <li><a href="{{url_for('home')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Booking Details</h1>
+            <p class="lead">Please Confirm to Book  !</p>
+        </div><!-- page-header -->
+
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Passenger name</th>
+                    <th>Flight ID</th>
+                    <th>Flight Name</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{row['flight_number']}}</td>
+                        <td>{{row['airlines_id']}}</td>
+                        <td>{{row['source']}}</td>
+                        <td>{{row['destination']}}</td>
+                        <td>{{row['departure']}}</td>
+                        <td>{{row['arrival']}}</td>
+                        <td>{{row['date']}}</td>
+                        <td>{{2*row['base_price']}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        	<div class="col-lg-4" "col-md-4" "col-sm-4" "col-xs-4"></div>
+          	<div class="col-lg-4" "col-md-4" "col-sm-4" "col-xs-4">
+        <a href="/confirm_booking/{{email}}/{{flight_number}}" role="button" class="btn btn-danger btn-lg" style="text-align:center;">Confirm Booking</a>
+      </div>
+    </div><!-- container -->
+
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>

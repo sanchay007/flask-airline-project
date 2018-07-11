@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to aerogen</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+       <div class="container-fluid">
+
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="{{url_for('home')}}">AeroGen</a>
+           </div>
+
+           <div class="collapse navbar-collapse" id="navbar-collapse">
+
+               <ul class="nav navbar-nav">
+                   <li><a href="{{url_for('home')}}">Home</a></li>
+                   
+               </ul>
+
+               
+
+               <ul class="nav navbar-nav navbar-right">
+                   <li><a href="{{url_for('signUp')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      
+                </ul>
+
+           </div>
+
+       </div>
+
+   </nav>
+   <br>
+ <br>
+ <div class="container">
+            <h1 style="text-align:center;">Login</h1>
+            <p class="lead" style="text-align:center;">Use this form to log in to your account</p>
+
+          <div class=row>
+            <div class="col-lg-4" "col-md-4" "col-sm-4" "col-xs-4"></div>
+            <div class="col-lg-4" "col-md-4" "col-sm-4" "col-xs-4">
+                <h3>{{msg}}</h3>
+            <form class="form" action="{{url_for('userBook')}}" method="post">
+
+                <div class="form-group">
+                    <label for="login-username" class="sr-only">Username</label>
+                    <input type="text" class="form-control" id="login-username" placeholder="username" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="login-password" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="login-password" placeholder="password" name="passwd">
+                </div>
+                <button type="submit" class="btn btn-default" name="login">Login!</button>
+
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('home')}}">AeroGen</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    
+                </ul>
+
+               
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/showOlderBooking/{{var}}" class="active">Show Older Booking</a></li>
+                    <li><a href="{{url_for('home')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+    <div class="jumbotron">
+    <center>
+  <h1>AeroGen!For Smiling Faces!</h1><marquee behavior="scroll" direction="right" onmouseover="this.stop();" onmouseout="this.start();"><img src="static/img/airplanesymbol.png" height='100px'></marquee>
+  <p style="margin:0px">Welcome to aerogen.</p>
+  <p style="padding:0px">We bring you a better travelling experience</p>
+</center>
+  </div>
+
+<div class="container">
+  <h2>Your bookings</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>BOOKING ID</th>
+        <th>FLIGHT NUMBER</th>
+        <th>EMAIL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr>
+            <td>{{row['booking_id']}}</td>
+            <td>{{row['flight_num']}}</td>
+            <td>{{row['email']}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
