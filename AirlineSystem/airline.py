@@ -42,7 +42,7 @@ def login():
     if(request.method=='GET'):
         return render_template('login.html')
 
-#After Login Userbook
+#After Login Userbook random checking pr
 @app.route('/userBook',methods=['GET','POST'])
 def userBook():
     if(request.method=='POST'):
