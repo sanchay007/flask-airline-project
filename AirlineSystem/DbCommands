@@ -1,0 +1,8 @@
+create table Users(user_id varchar(20),email varchar(30),password varchar(20), phone_number varchar(10),gender varchar(10));
+
+create table Airlines(flight_number int, airlines_id varchar(20), source varchar(20), destination varchar(20), date date, departure time, arrival time, base_price float);
+
+create table Bookings(email varchar(30), flight_num int);
+
+INSERT INTO Airlines(airlines_id, source, destination, date, departure, arrival, base_price) values('Indigo', 'Bangalore', 'Delhi', '15-01-2022', time('now'), '19:25:50', 5000);
+INSERT INTO Airlines(airlines_id, source, destination, date, departure, arrival, base_price) values('Indigo', 'Bangalore', 'Patna', '15-01-2022', '06:00:00', '08:30:00', 7000);

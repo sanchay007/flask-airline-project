@@ -24,7 +24,7 @@ def successRegistration():
             passwd=request.form['passwd']
             phone=request.form['phone']
             gender=request.form['formRadio']
-            with sql.connect("database.db") as con:
+            with sql.connect("sqlite.db") as con:
                 cur=con.cursor()
                 cur.execute("INSERT OR IGNORE INTO Users(user_id,email,password,phone_number,gender)VALUES(?,?,?,?,?)",(name,email,passwd,phone,gender))
                 con.commit()
@@ -48,7 +48,7 @@ def userBook():
     if(request.method=='POST'):
         name=request.form['name']
         passwd=request.form['passwd']
-        con=sql.connect("database.db")
+        con=sql.connect("sqlite.db")
         con.row_factory=sql.Row
         cur=con.cursor()
         cur.execute("SELECT * FROM Users WHERE user_id=?",(name,))
@@ -72,9 +72,10 @@ def flight_details():
         source=request.form['source']
         dest=request.form['dest']
         date=request.form['date']
-        con=sql.connect("database.db")
+        con=sql.connect("sqlite.db")
         con.row_factory=sql.Row
         cur=con.cursor()
+        print(date)
         cur.execute("SELECT * FROM Airlines where source=? AND destination=? AND date=?",(source,dest,date,))
         rows=cur.fetchall()
         if(rows):
@@ -96,7 +97,7 @@ def passenger_details(flight_number):
         name=request.form['name']
         phone=request.form['phone']
         email=request.form['email']
-        con=sql.connect("database.db")
+        con=sql.connect("sqlite.db")
         con.row_factory=sql.Row
         cur=con.cursor()
         cur.execute("SELECT * FROM Airlines where flight_number=?",(flight_number,))
@@ -107,7 +108,7 @@ def passenger_details(flight_number):
 @app.route('/confirm_booking/<email>/<flight_number>',methods=['GET','POST'])
 def confirm_booking(email,flight_number):
     try:
-        with sql.connect("database.db") as con:
+        with sql.connect("sqlite.db") as con:
             cur=con.cursor()
             cur.execute("INSERT OR IGNORE INTO Bookings(email,flight_num)VALUES(?,?)",(email,flight_number))
             con.commit()
@@ -123,7 +124,7 @@ def confirm_booking(email,flight_number):
 @app.route('/showOlderBooking/<email>',methods=['GET','POST'])
 def showOlderBooking(email):
     if(request.method=='GET'):
-        con=sql.connect("database.db")
+        con=sql.connect("sqlite.db")
         con.row_factory=sql.Row
         cur=con.cursor()
         cur.execute("SELECT * FROM Bookings where email=?",(email,))
